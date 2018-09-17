@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Psychic Game</title>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+    </script>"
+</head>
+<body>
+        <!-- Computer's letters option. 
+        Computer picks a random letter
+        Player to make a guess of which letter the computer chose.
+        Capture those choices
+        Compare those choices, and determine a win, loss, or tie
+        Display the results.
+        Guess left
+        Player's guesses so far.
+        When player wins, increase the Wins counter and start the game over again (without refreshing the page)
+        When player looses, increase the Losses counter and start the game over again (without refreshing the page) -->
+
+
+<script>
+    var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
+    var wins = 0;
+    var losses = 0;
+    var guess = 10;
+        
+        var computerGuess = letters[Math.floor(Math.random()*letters.length)];
+
+        console.log(computerGuess)
+
+        document.onkeyup = function() {
+        var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+        console.log(userGuess);
+
+        if (userGuess === computerGuess) {
+            wins++;
+        }else{
+            guesses--;
+        }
+        if (guess == 0){
+            loss++;
+        }
+
+    }
+        document.getElementById("wins").innerHTML = "Wins:  + wins";
+        document.getElementById("losses").innerHTML = "Losses:  + losses";
+        document.getElementById("guesses").innerHTML = "Guesses Left:  + guesses";
+
+
+
+</script>
+</body>
+</html>
