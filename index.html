@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Psychic Game</title>
-    <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+
+        </script>
 </head>
+
 <body>
-        <!-- Computer's letters option. 
+    <!-- Computer's letters option. 
         Computer picks a random letter
         Player to make a guess of which letter the computer chose.
         Capture those choices
@@ -22,74 +23,78 @@
         Player's guesses so far.
         When player wins, increase the Wins counter and start the game over again (without refreshing the page)
         When player looses, increase the Losses counter and start the game over again (without refreshing the page) -->
-        
-        <h1> The Psychic Game</h1>
+
+    <h1> The Psychic Game</h1>
 
 
-<div>
+    <div>
         <p id="directions-text">Guess what letter I'm thinking of!</p>
         <p id="userchoice-text"></p>
         <p id="computerchoice-text"></p>
         <p id="wins-text"></p>
         <p id="losses-text"></p>
+        <p id="guesses-text"></p>
 
-</div>
+    </div>
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
-    var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-    var wins = 0;
-    var losses = 0;
-    var guesses = 10;
+        var wins = 0;
+        var losses = 0;
+        var guesses = 10;
 
-    var directionsText = document.getElementById("directions-text");
-    var userChoiceText = document.getElementById("userchoice-text");
-    var computerChoiceText = document.getElementById("computerchoice-text");
-    var wl = document.getElementById("w-l");
-    var winsText = document.getElementById("wins-text");
-    var lossesText = document.getElementById("losses-text");
-    var guessesText = document.getElementById("guesses-text");
-  
-
-
-    document.onkeyup = function(event) {
-        // console.log(event);
-        var userGuess = event.key;
-
-        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-
-        console.log(event.key);
-       if (event.key === "Escape") {
-        wins = 0;
-        losses = 0;
-        guesses = 10;
-
-        winsText.textContent = "wins: " + wins;
-        lossesText.textContent = "losses: " + losses;
-        guessLeftText.textContent = "guess left: " + guesses;
-
-    }
-
-    if (userGuess === computerGuess){
-        winn++;
-    }else{
-        guesses--;
-    }
-
-    if (guesses === 0){
-        looses++;
-    }
+        var directionsText = document.getElementById("directions-text");
+        var userChoiceText = document.getElementById("userchoice-text");
+        var computerChoiceText = document.getElementById("computerchoice-text");
+        var wl = document.getElementById("w-l");
+        var winsText = document.getElementById("wins-text");
+        var lossesText = document.getElementById("losses-text");
+        var guessesText = document.getElementById("guesses-text");
 
 
-        userChoiceText.textContent = "You chose: " + userGuess;
-        computerChoiceText.textContent = "The computer chose: " + computerGuess;
-        winsText.textContent = "wins: " + wins;
-        lossesText.textContent = "losses: " + losses;
-        guessLeftText.textContent = "guess left: " + guesses;
-    } 
-    
-</script>
+
+        document.onkeyup = function (event) {
+            // console.log(event);
+            var userGuess = event.key;
+
+            var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+            console.log(event.key);
+            if (event.key === "Escape") {
+                wins = 0;
+                losses = 0;
+                guesses = 10;
+
+                winsText.textContent = "wins: " + wins;
+                lossesText.textContent = "losses: " + losses;
+                guessesText.textContent = "guess left: " + guesses;
+
+            }
+
+            if (userGuess === computerGuess) {
+                wins++;
+                guesses = 10;
+            
+
+            } else {
+                guesses--;
+            }
+
+            if (guesses === 0) {
+                losses++;
+                guesses = 10;
+            }
+
+            userChoiceText.textContent = "You chose: " + userGuess;
+            computerChoiceText.textContent = "The computer chose: " + computerGuess;
+            winsText.textContent = "wins: " + wins;
+            lossesText.textContent = "losses: " + losses;
+            guessesText.textContent = "guess left: " + guesses;
+        }
+
+    </script>
 
 </body>
 
