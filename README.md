@@ -1,2 +1,2 @@
-# Psychi-Game
+# Psychic-Game
 Assignment-W3 (easier version)
